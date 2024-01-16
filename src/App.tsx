@@ -1,41 +1,40 @@
-import { useState } from 'react';
+import { SelectValue, SelectTrigger, SelectItem, SelectContent, Select } from "@/components/ui/select"
+import { useState } from 'react'
 
 export default function App() {
-  const [theme, setTheme] = useState('dark');
-
-  const toggleTheme = () => {
-    setTheme(prevTheme => {
-      switch (prevTheme) {
-        case 'dark':
-          return 'light';
-        case 'light':
-          return 'terminal';
-        case 'terminal':
-          return 'cyber';
-        case 'cyber':
-          return 'historic';
-        case 'historic':
-          return 'dark';
-        default:
-          return 'dark';
-      }
-    });
-  };
+  const [theme, setTheme] = useState('terminal');
 
   return (
-    <div className={`w-screen h-screen ${theme} bg-brand`}>
-      <div className='py-8 px-16'>
-        <h1 className="text-5xl font-bold underline text-primary">
-          Theme Switcher
-        </h1>
-        <h3 className="text-2xl font-semibold text-secondary my-3">
-          Welcome to the theme switcher! Current theme is <span className='text-title'>{theme}</span>.
-        </h3>
-        <button onClick={toggleTheme} className="mt-4 p-2 bg-blue-500 text-white">
-          Toggle Theme
-        </button>
-      </div>
-      
+    <div className={`${theme} flex flex-col w-screen h-screen bg-brand px-3 lg:px-16 py-10`}>
+      <header className="flex items-center justify-between px-4 py-2 border-b border-primary-theme">
+        <h1 className="text-5xl font-semibold text-title">Theme Switcher - {theme}</h1>
+        <Select onValueChange={(value) => setTheme(value)}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Theme" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="light">Light</SelectItem>
+            <SelectItem value="dark">Dark</SelectItem>
+            <SelectItem value="terminal">Terminal</SelectItem>
+            <SelectItem value="cyber">Cyber</SelectItem>
+            <SelectItem value="historic">Historic</SelectItem>
+          </SelectContent>
+        </Select>
+      </header>
+      <main className="flex-1 p-4 md:p-6 overflow-auto">
+        <div className="">
+          <h2 className="text-primary-theme">Welcome to the Theme Switcher</h2>
+          <p className="text-secondary-theme">
+            This is a demo website for switching themes. It has 5 theme options to select: light, dark,
+            terminal, cyber, and historic. The website showcases a simple layout with a header, a main content
+            area, and a footer. Each theme option changes the color scheme of the website to reflect the selected
+            theme.
+          </p>
+        </div>
+      </main>
+      <footer className="flex items-center justify-center py-4 border-t border-primary-theme ">
+        <p className="text-sm text-secondary-theme">© 2024 Acme Inc</p>
+      </footer>
     </div>
   )
 }
