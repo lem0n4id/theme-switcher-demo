@@ -33,7 +33,7 @@ export default function App() {
         </div>
       </main>
       <footer className="flex items-center justify-center py-4 border-t border-primary-theme ">
-        <p className="text-sm text-secondary-theme">© 2024 Acme Inc</p>
+        <p className="text-sm text-secondary-theme">Made with ❤️ by <a href="https://www.github.com/lem0n4id">Lenin Kennedy</a></p>
       </footer>
     </div>
   )
